@@ -1,0 +1,32 @@
+
+1、注册npm网站
+2、项目中package.json中的scripts中配置以下内容
+    "lib": "vue-cli-service build --target lib 
+    --name god-zimo-ui  ./src/packages/index.js"
+
+    god-zimo-ui：【UI库名字】
+    ./src/packages/index.js：【有install方法的文件路径：相对于package.json】
+ 3、"private": false, 公开库
+ 4、"main": "./dist/god-zimo-ui.umd.min.js",
+    使用npm run lib 自动生成了dist打包后的文件
+    只需要发布dist即可
+
+ 5、package.json中name属性、UI库的名字、入口文件引入是都叫做 god-zimo-ui
+
+ 6、在package.json同级建立一个.npmignore 用于忽略哪些文件是不需要提交到npm官网
+    
+    除了dist文件，其余的文件夹【node_modules不用管】都需要写在.npmignore 文件内，不需要发布
+
+注意：
+    1、如果你已经发布过了，后续更新功能再次发布，必须修改版本号
+    2、如果已经发布成功了，你在本项目内使用你发布的UI库，如果使用时失败
+       报错：没有找到当前这个库，你需要修改package.json中的name属性，
+       然后重新下载
+
+    发布的时候名字都一样，在当前项目中使用当前库，必须修改package.json中的name属性
+    
+npm login 登录npm账号   用户名&密码&邮箱账号
+
+npm publish 发布到npm官网  如果没有权限403 加sudo npm publish
+
+
